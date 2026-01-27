@@ -21,5 +21,6 @@ public class mirrorEnds_strings {
             }
         }
     return(result);
+        // checking the version control system
     }
 }
