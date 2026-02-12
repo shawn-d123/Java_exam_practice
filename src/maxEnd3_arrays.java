@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class maxEnd3_arrays {
 
     public static void main(String[] args){
-        System.out.println(Arrays.toString(maxEnd3(new int[]{1, 2, 3})));
+        System.out.println(Arrays.toString(maxEnd3(new int[]{1, 2, 3, 4, 6, 7, 8, 9})));
     }
 
     public static int[] maxEnd3(int[] nums) {
