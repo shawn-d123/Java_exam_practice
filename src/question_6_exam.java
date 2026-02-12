@@ -17,8 +17,14 @@ public class question_6_exam {
 
         }
 
+        System.out.println("Total is: " + total);
         // step 2
-        Double
+        double[] P = new double[xdays];
+
+        for (int i = 0; i < P.length; i++) {
+
+        }
+
         return T;
     }
 }
