@@ -1,6 +1,6 @@
 public class question_7_exam {
 
-    // 4 vertices totoal
+    // 4 vertices total
     // focal point is the last set: arr[arr.length -2] and arr[arr.length -3]
 
     public static void main(String[] args) {
