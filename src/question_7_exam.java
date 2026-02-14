@@ -168,5 +168,46 @@ public class question_7_exam {
         return result;
     }
 
+    /*
+     * QUESTION — Rectangle Reflection Across X-Axis
+     *
+     * Write a method:
+     *
+     *     public static double[][] RectangleReflect(int[][] rectangles)
+     *
+     * Each row contains 8 integers:
+     *
+     *     {x1, y1, x2, y2, x3, y3, x4, y4}
+     *
+     * You must reflect the rectangle across the X-axis.
+     *
+     * Reflection formula:
+     *
+     *     newX = x
+     *     newY = -y
+     *
+     * VALIDATION RULES (apply in this order per row):
+     *
+     * 1) If rectangles[i] == null
+     *      -> results[i] = new double[]{-1.0}
+     *
+     * 2) If rectangles[i].length != 8
+     *      -> results[i] = new double[]{-2.0}
+     *
+     * 3) If ANY coordinate is outside the range [-500, 500]
+     *      -> results[i] = new double[]{-3.0}
+     *
+     * 4) Otherwise:
+     *      -> return reflected coordinates:
+     *         {x1, -y1, x2, -y2, x3, -y3, x4, -y4}
+     *
+     * NOTES:
+     * - Output must be jagged double[][].
+     * - Do NOT return early.
+     * - Process every row.
+     */
+
+
+
 
 }
