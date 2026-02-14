@@ -8,6 +8,7 @@ public class question_7_exam {
 
     }
 
+    // actual exam question:
     public static double[][] TriangleRotation(int[][] triangles) {
 
         // Results has same number of rows as triangles,
@@ -69,6 +70,8 @@ public class question_7_exam {
 
         return results;
     }
+
+
 
 
 }
