@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class question_7_exam {
 
     // 4 vertices total
@@ -5,7 +7,16 @@ public class question_7_exam {
 
     public static void main(String[] args) {
 
+            int[][] matrix = {
+                    {0, 0, 6, 8, 1, 1, 2},
+                    null,
+                    {0, 0, 6, 8, 1, 1},
+                    {0, 0, 6, 8, 1, 1, -2},
+                    {0, 0, 6, 8, 1, 1, 0},
+            };
 
+        //    System.out.println(Arrays.deepToString(TriangleRotation(matrix)));
+        System.out.println(Arrays.deepToString(TriangleScale(matrix)));
     }
 
     // actual exam question:
@@ -72,6 +83,90 @@ public class question_7_exam {
     }
 
 
+    /*
+     * QUESTION — Triangle Scaling
+     *
+     * Write a method:
+     *
+     *     public static double[][] TriangleScale(int[][] triangles)
+     *
+     * Each row of triangles contains:
+     *     {x1, y1, x2, y2, x3, y3, scaleFactor}
+     *
+     * The focal point is always the third vertex (x3, y3).
+     *
+     * You must scale the triangle relative to the focal point.
+     *
+     * Scaling formula for a point (x, y):
+     *
+     *     scaledX = fx + (x - fx) * scaleFactor
+     *     scaledY = fy + (y - fy) * scaleFactor
+     *
+     * VALIDATION RULES (apply in this order per row):
+     *
+     * 1) If triangles[i] == null
+     *      -> results[i] = new double[]{-1.0}
+     *
+     * 2) If triangles[i].length != 7
+     *      -> results[i] = new double[]{-2.0}
+     *
+     * 3) If scaleFactor <= 0
+     *      -> results[i] = new double[]{-3.0}
+     *
+     * 4) Otherwise:
+     *      -> return scaled coordinates as:
+     *         {sx1, sy1, sx2, sy2, sx3, sy3}
+     *
+     * NOTES:
+     * - Output must be a jagged double[][].
+     * - Do NOT return early.
+     * - Process every row.
+     */
+
+    public static double[][] TriangleScale(int[][] triangles){
+        // format of triangles: {x1, y1, x2, y2, x3, y3, scaleFactor}
+
+        double[][] result = new double[triangles.length][];
+
+        for(int i = 0; i < triangles.length; i++) {
+           if(triangles[i] == null) {
+               result[i] = new double[]{-1.0};
+           }else if(triangles[i].length != 7 ){
+                result[i] = new double[]{-2.0};
+           }
+           else if(triangles[i][6] <= 0){
+               result[i] = new double[]{-3.0};
+           }
+           // valid row
+           else{
+               // since row is valid we need to add an array of length 6 to result at each row
+               result[i] = new double[6];
+
+                double sf = triangles[i][6];
+                double fx = triangles[i][4];
+                double fy = triangles[i][5];
+
+                // first vertex
+                double x1 = fx + (triangles[i][0] - fx) * sf;
+                double y1 = fy + (triangles[i][1] - fy) * sf;
+                result[i][0] = x1;
+                result[i][1] = y1;
+
+                // second vertex
+               double x2 = fx + (triangles[i][2] - fx) * sf;
+               double y2 = fy + (triangles[i][3] - fy) * sf;
+               result[i][2] = x2;
+               result[i][3] = y2;
+
+               //focal point vertex
+                double x3 = fx + (triangles[i][4] - fx) * sf;
+                double y3 = fy + (triangles[i][5] - fy) * sf;
+                result[i][4] = x3;
+                result[i][5] = y3;
+           }
+        }
+        return result;
+    }
 
 
 }
