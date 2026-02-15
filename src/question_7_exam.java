@@ -15,8 +15,17 @@ public class question_7_exam {
                     {0, 0, 6, 8, 1, 1, 0},
             };
 
+        int[][] triangles = {
+                {1, 2, 3, 4, 5, 6, 2, -1, 10},
+                null,
+                {1, 2, 3},
+                {0, 0, 100, 0, 0, 0, 0, 0, 50}
+        };
+
         //    System.out.println(Arrays.deepToString(TriangleRotation(matrix)));
         System.out.println(Arrays.deepToString(TriangleScale(matrix)));
+
+        System.out.println("Translate triangles result: " + Arrays.deepToString(TriangleTranslate(triangles)));
     }
 
     // actual exam question:
@@ -169,44 +178,98 @@ public class question_7_exam {
     }
 
     /*
-     * QUESTION — Rectangle Reflection Across X-Axis
+     * QUESTION — Triangle Translation + Distance Check (Harder)
      *
      * Write a method:
      *
-     *     public static double[][] RectangleReflect(int[][] rectangles)
+     *     public static double[][] TriangleTranslate(int[][] triangles)
      *
-     * Each row contains 8 integers:
+     * Each row has 9 integers:
+     *     {x1, y1, x2, y2, x3, y3, dx, dy, maxDist}
      *
-     *     {x1, y1, x2, y2, x3, y3, x4, y4}
+     * ACTION:
+     * - Translate (move) every vertex by (dx, dy):
+     *       newX = x + dx
+     *       newY = y + dy
      *
-     * You must reflect the rectangle across the X-axis.
+     * - Focal point is the third vertex AFTER translation:
+     *       fx = x3 + dx
+     *       fy = y3 + dy
      *
-     * Reflection formula:
+     * - After translation, check each translated vertex distance from the focal point.
+     *   Distance formula:
+     *       dist = sqrt( (x - fx)^2 + (y - fy)^2 )
      *
-     *     newX = x
-     *     newY = -y
+     * If ANY translated vertex has dist > maxDist, the row is invalid.
      *
      * VALIDATION RULES (apply in this order per row):
      *
-     * 1) If rectangles[i] == null
+     * 1) If triangles[i] == null
      *      -> results[i] = new double[]{-1.0}
      *
-     * 2) If rectangles[i].length != 8
+     * 2) If triangles[i].length != 9
      *      -> results[i] = new double[]{-2.0}
      *
-     * 3) If ANY coordinate is outside the range [-500, 500]
+     * 3) If maxDist <= 0
      *      -> results[i] = new double[]{-3.0}
      *
-     * 4) Otherwise:
-     *      -> return reflected coordinates:
-     *         {x1, -y1, x2, -y2, x3, -y3, x4, -y4}
+     * 4) If after translation ANY vertex distance from focal point is > maxDist
+     *      -> results[i] = new double[]{-4.0}
+     *
+     * 5) Otherwise return translated coordinates:
+     *      {nx1, ny1, nx2, ny2, nx3, ny3}
      *
      * NOTES:
      * - Output must be jagged double[][].
-     * - Do NOT return early.
-     * - Process every row.
+     * - Do NOT return early; process all rows.
      */
 
+    public static double[][] TriangleTranslate(int[][] triangles){
+
+        double[][] result = new double[triangles.length][];
+        for(int i = 0; i < triangles.length; i++) {
+
+
+            if (triangles[i] == null) {
+                result[i] = new double[]{-1.0};
+            }
+            else if(triangles[i].length != 9 ){
+                result[i] = new double[]{-2.0};
+            }
+
+            else if (triangles[i][8] <= 0){
+                result[i] = new double[]{-3.0};
+            }
+            else{
+                // valid vertextes
+
+                // max distance
+                double maxDist = triangles[i][8];
+                // translation distances
+                double xdist = triangles[i][6];
+                double ydist = triangles[i][7];
+
+                // focal point after translation
+                double xfocal = triangles[i][4] + xdist;
+                double yfocal = triangles[i][5] + ydist;
+
+                for(int j = 0; j < triangles[i].length - 1; j++){
+
+                    // translate vertex
+                    double newX = triangles[i][j] + xdist;
+                    double newY = triangles[i][j+1] + ydist;
+
+                    // distance from focal point
+                    double distance =  Math.sqrt(Math.pow((newX - xfocal),2) + Math.pow((newY - yfocal),2));
+
+                    if(distance > maxDist){
+                        result[i] = new double[]{-4.0};
+                    }
+                }
+            }
+        }
+        return result;
+    }
 
 
 
