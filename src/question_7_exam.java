@@ -22,10 +22,21 @@ public class question_7_exam {
                 {0, 0, 100, 0, 0, 0, 0, 0, 50}
         };
 
+        int[][] shapes = {
+                {1, 2, 3, 4, 5, 6, 90},
+                {0, 0, 4, 0, 4, 3, 0, 3, 180},
+                null,
+                {1, 2, 3},
+                {1, 2, 3, 4, 5, 6, 7, 8, -10},
+                {1, 2, 3, 4, 5, 6, 45, 999}
+        };
+
         //    System.out.println(Arrays.deepToString(TriangleRotation(matrix)));
         System.out.println(Arrays.deepToString(TriangleScale(matrix)));
 
         System.out.println("Translate triangles result: " + Arrays.deepToString(TriangleTranslate(triangles)));
+
+        System.out.println("Polygon Rotate result: " + Arrays.deepToString(PolygonRotate(shapes)));
     }
 
     // actual exam question:
@@ -269,6 +280,120 @@ public class question_7_exam {
             }
         }
         return result;
+    }
+    /*
+     * QUESTION — Polygon Rotation Around Centroid (Harder)
+     *
+     * Write a method:
+     *
+     *     public static double[][] PolygonRotate(int[][] shapes)
+     *
+     * Each row represents one polygon.
+     *
+     * FORMAT OF EACH ROW:
+     * - The LAST element is the angle in degrees.
+     * - All previous elements are vertex pairs:
+     *       {x1, y1, x2, y2, x3, y3, ..., angle}
+     *
+     * Example of a triangle row (3 vertices + angle):
+     *       {1,2, 3,4, 5,6, 90}
+     *
+     * Example of a rectangle row (4 vertices + angle):
+     *       {0,0, 4,0, 4,3, 0,3, 180}
+     *
+     * ACTION:
+     * 1) Compute centroid (average of x's and y's):
+     *       cx = (x1 + x2 + ... + xk) / k
+     *       cy = (y1 + y2 + ... + yk) / k
+     *
+     * 2) Rotate every vertex around (cx, cy) by the given angle.
+     *
+     * Rotation formulas (theta in radians):
+     *       rx = ((x - cx) * cos(theta) - (y - cy) * sin(theta)) + cx
+     *       ry = ((x - cx) * sin(theta) + (y - cy) * cos(theta)) + cy
+     *
+     * VALIDATION RULES (apply in this order per row):
+     *
+     * 1) If shapes[i] == null
+     *      -> results[i] = new double[]{-1.0}
+     *
+     * 2) If shapes[i].length < 7
+     *      -> results[i] = new double[]{-2.0}
+     *      (Reason: need at least 3 vertices (6 values) + angle (1 value))
+     *
+     * 3) If (shapes[i].length - 1) is not even
+     *      -> results[i] = new double[]{-3.0}
+     *      (Reason: vertices must be pairs before the final angle)
+     *
+     * 4) If angle < 0 or angle > 360
+     *      -> results[i] = new double[]{-4.0}
+     *
+     * 5) Otherwise return rotated coordinates in the same order
+     *    (do NOT include the angle in output).
+     *
+     * OUTPUT RULE:
+     * - For a valid row with k vertices, output length must be 2*k.
+     *
+     * NOTES:
+     * - Output must be jagged double[][].
+     * - Do NOT return early; process all rows.
+     */
+
+    public static double[][] PolygonRotate(int[][] shapes) {
+
+        if (shapes == null) {
+            return null;
+        }
+
+        double[][] results = new double[shapes.length][];
+
+        for (int row = 0; row < shapes.length; row++) {
+
+            if (shapes[row] == null) {
+                results[row] = new double[]{-1.0};
+            }
+            else if (shapes[row].length < 7) {
+                results[row] = new double[]{-2.0};
+            }
+            else if ( (shapes[row].length - 1) % 2 != 0 ) {
+                results[row] = new double[]{-3.0};
+            }
+            else if (shapes[row][shapes[row].length - 1] < 0 || shapes[row][shapes[row].length - 1] > 360) {
+                results[row] = new double[]{-4.0};
+            }
+            else {
+                int numVertices = (shapes[row].length - 1) / 2;
+                double theta = Math.toRadians(shapes[row][shapes[row].length - 1]);
+
+                // centroid
+                double cx = 0;
+                double cy = 0;
+                for (int i = 0; i < shapes[row].length - 1; i += 2) {
+                    cx += shapes[row][i];
+                    cy += shapes[row][i + 1];
+                }
+                cx /= numVertices;
+                cy /= numVertices;
+
+                results[row] = new double[2 * numVertices];
+
+                int out = 0; // clearer than using i
+                for (int i = 0; i < shapes[row].length - 1; i += 2) {
+                    double x = shapes[row][i];
+                    double y = shapes[row][i + 1];
+
+                    double rx = ((x - cx) * Math.cos(theta) - (y - cy) * Math.sin(theta)) + cx;
+                    double ry = ((x - cx) * Math.sin(theta) + (y - cy) * Math.cos(theta)) + cy;
+
+                    results[row][out] = rx;
+
+                    results[row][out + 1] = ry;
+                    out += 2;
+                }
+            }
+        }
+
+        return results;
     }
 
 
