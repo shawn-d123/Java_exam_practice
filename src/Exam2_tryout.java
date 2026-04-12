@@ -18,7 +18,6 @@ public class Exam2_tryout {
                     System.out.println(i);
                 }
             }
-
             System.out.println("=====================");
         }
     }
