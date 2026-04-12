@@ -16,10 +16,15 @@ public class Exam2_tryout {
                 }
                 else{
                     System.out.println(i);
+                    callName("Kevin");
                 }
             }
             System.out.println("=====================");
         }
+    }
+
+    private static void callName(String name) {
+        System.out.println("Hello " + name);
     }
 
 
