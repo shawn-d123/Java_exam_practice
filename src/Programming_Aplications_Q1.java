@@ -151,7 +151,14 @@ public class Programming_Aplications_Q1 {
      */
     public static int validDictionary(char[][] board, String[] dictionary)
     {
-        // Write your answer here.
+        if(board == null){
+            return 1;
+        }
+        if(board.length <= 1){
+            return 2;
+        }
+
+
         return -1;
     }
 
