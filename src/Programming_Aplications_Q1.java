@@ -355,14 +355,59 @@ public class Programming_Aplications_Q1 {
     /*
      * Question 7 — Count Dictionary
      *
-     * Method line:
+     * Write this method:
      * public static int[] countDictionary(char[][] board, String[] dictionary)
      *
-     * You have not written this answer yet.
+     * The assessment says:
+     * Assuming that the board and dictionary are valid, return a list of counts showing
+     * how many times each word in the dictionary appears on the board.
+     *
+     * Practice behaviour:
+     * - Return an int[] array.
+     * - The returned array should be the same length as the dictionary.
+     * - result[i] should store how many times dictionary[i] appears on the board.
+     *
+     * Example:
+     *
+     * char[][] board = {
+     *     {'C', 'A', 'T'},
+     *     {'A', 'A', 'A'},
+     *     {'D', 'O', 'G'}
+     * };
+     *
+     * String[] dictionary = {"CAT", "DOG", "CAR"};
+     *
+     * countDictionary(board, dictionary)
+     *
+     * should return:
+     * {1, 1, 0}
+     *
+     * because:
+     * - CAT appears once
+     * - DOG appears once
+     * - CAR appears zero times
+     *
+     * Valid directions:
+     * - vertical down
+     * - horizontal left-to-right
+     * - diagonal down-right
+     * - diagonal up-right
+     *
+     * You should use this helper method:
+     * - findWord(word, board, row, col)
+     *
+     * General approach:
+     * 1. Create an int[] called counts with the same length as dictionary.
+     * 2. Loop through every word in the dictionary.
+     * 3. For each word, loop through every row and column on the board.
+     * 4. Call findWord(word, board, row, col).
+     * 5. If findWord returns 0, 1, 2, or 3, then the word was found.
+     * 6. Increase that word's count.
+     * 7. Return the counts array.
      */
     public static int[] countDictionary(char[][] board, String[] dictionary)
     {
-        // TODO: Write this method later.
+        // Write your answer here.
         return null;
     }
 }
