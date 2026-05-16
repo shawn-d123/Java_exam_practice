@@ -329,9 +329,27 @@ public class Programming_Aplications_Q1 {
             }
         }
 
+        boolean foundDiagonalUp = true;
+
+        if (startRow - word.length() + 1 >= 0 && startCol + word.length() <= board.length)
+        {
+            for (int i = 0; i < word.length(); i++)
+            {
+                if (board[startRow - i][startCol + i] != word.charAt(i))
+                {
+                    foundDiagonalUp = false;
+                }
+            }
+
+            if (foundDiagonalUp == true)
+            {
+                return 3;
+            }
+        }
+
 
         // Write your answer here.
-        return -1;
+        return 4; // word not found from the given start position
     }
 
     /*
