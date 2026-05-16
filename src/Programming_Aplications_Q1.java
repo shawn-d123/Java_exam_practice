@@ -127,14 +127,31 @@ public class Programming_Aplications_Q1 {
     /*
      * Question 4 — Valid Dictionary
      *
-     * Method line:
+     * Write this method:
      * public static int validDictionary(char[][] board, String[] dictionary)
      *
-     * You have not written this answer yet.
+     * Practice return rules:
+     * return 0 if the dictionary is valid
+     * return 1 if the dictionary is null
+     * return 2 if the dictionary is too small / empty
+     * return 3 if the board is invalid
+     * return 4 if the dictionary contains an invalid word
+     * return 5 if the dictionary contains a word too big for the board
+     *
+     * A valid dictionary must:
+     * - not be null
+     * - not be empty
+     * - be used with a valid board
+     * - contain only valid words
+     * - contain no word longer than the board size
+     *
+     * You should use these helper methods:
+     * - validBoard(board)
+     * - validWord(dictionary[i])
      */
     public static int validDictionary(char[][] board, String[] dictionary)
     {
-        // TODO: Write this method later.
+        // Write your answer here.
         return -1;
     }
 
