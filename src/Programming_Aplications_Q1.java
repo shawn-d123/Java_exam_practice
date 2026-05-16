@@ -407,7 +407,26 @@ public class Programming_Aplications_Q1 {
      */
     public static int[] countDictionary(char[][] board, String[] dictionary)
     {
-        // Write your answer here.
-        return null;
+        int[] counts = new int[dictionary.length];
+
+        for (int wordIndex = 0; wordIndex < dictionary.length; wordIndex++)
+        {
+            String currentWord = dictionary[wordIndex];
+
+            for (int row = 0; row < board.length; row++)
+            {
+                for (int col = 0; col < board[row].length; col++)
+                {
+                    int result = findWord(currentWord, board, row, col);
+
+                    if (result >= 0 && result <= 3)
+                    {
+                        counts[wordIndex]++;
+                    }
+                }
+            }
+        }
+
+        return counts;
     }
 }
