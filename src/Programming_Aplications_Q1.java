@@ -311,6 +311,24 @@ public class Programming_Aplications_Q1 {
             }
         }
 
+        boolean foundDiagonalDown = true;
+
+        if (startRow + word.length() <= board.length && startCol + word.length() <= board.length)
+        {
+            for (int i = 0; i < word.length(); i++)
+            {
+                if (board[startRow + i][startCol + i] != word.charAt(i))
+                {
+                    foundDiagonalDown = false;
+                }
+            }
+
+            if (foundDiagonalDown == true)
+            {
+                return 2;
+            }
+        }
+
 
         // Write your answer here.
         return -1;
