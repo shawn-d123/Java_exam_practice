@@ -280,7 +280,12 @@ public class Programming_Aplications_Q1 {
             return 7; // start coordinates are out of bounds
         }
 
+        // loop to check vertically down
+        if (startRow + word.length() < board.length){
+            for(int i =0; i < word.length(); i++){
 
+            }
+        }
 
 
         // Write your answer here.
