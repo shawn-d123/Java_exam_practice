@@ -232,14 +232,42 @@ public class Programming_Aplications_Q1 {
     /*
      * Question 6 — Find Word
      *
-     * Method line:
+     * Write this method:
      * public static int findWord(String word, char[][] board, int startRow, int startCol)
      *
-     * You have not written this answer yet.
+     * Practice return rules:
+     * return 0 if the word is found vertically downwards
+     * return 1 if the word is found horizontally left-to-right
+     * return 2 if the word is found diagonally down-right
+     * return 3 if the word is found diagonally up-right
+     * return 4 if the word is not found from the given start position
+     * return 5 if the word is invalid
+     * return 6 if the board is invalid
+     * return 7 if the start coordinates are out of bounds
+     *
+     * Valid directions:
+     * - vertical down
+     * - horizontal left-to-right
+     * - diagonal down-right
+     * - diagonal up-right
+     *
+     * You should use these helper methods:
+     * - validWord(word)
+     * - validBoard(board)
+     *
+     * General approach:
+     * 1. Check if the word is valid.
+     * 2. Check if the board is valid.
+     * 3. Check if startRow and startCol are inside the board.
+     * 4. Check whether the word appears vertically down.
+     * 5. Check whether the word appears horizontally right.
+     * 6. Check whether the word appears diagonally down-right.
+     * 7. Check whether the word appears diagonally up-right.
+     * 8. If none match, return not found.
      */
     public static int findWord(String word, char[][] board, int startRow, int startCol)
     {
-        // TODO: Write this method later.
+        // Write your answer here.
         return -1;
     }
 
