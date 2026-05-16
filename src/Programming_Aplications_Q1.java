@@ -267,6 +267,21 @@ public class Programming_Aplications_Q1 {
      */
     public static int findWord(String word, char[][] board, int startRow, int startCol)
     {
+        if (validWord(word) != 0)
+        {
+            return 5; // word is invalid
+        }
+        if (validBoard(board) != 0)
+        {
+            return 6; // board is invalid
+        }
+        if (startRow < 0 || startRow >= board.length || startCol < 0 || startCol >= board[0].length)
+        {
+            return 7; // start coordinates are out of bounds
+        }
+
+
+
 
         // Write your answer here.
         return -1;
