@@ -280,10 +280,34 @@ public class Programming_Aplications_Q1 {
             return 7; // start coordinates are out of bounds
         }
 
+        boolean foundVertical = true;
         // loop to check vertically down
         if (startRow + word.length() < board.length){
             for(int i =0; i < word.length(); i++){
+                if (board[startRow + i][startCol] != word.charAt(i)){
+                    foundVertical = false;
+                }
+            }
+            if (foundVertical){
+                return 0;
+            }
+        }
 
+        boolean foundHorizontal = true;
+
+        if (startCol + word.length() <= board.length)
+        {
+            for (int i = 0; i < word.length(); i++)
+            {
+                if (board[startRow][startCol + i] != word.charAt(i))
+                {
+                    foundHorizontal = false;
+                }
+            }
+
+            if (foundHorizontal == true)
+            {
+                return 1;
             }
         }
 
