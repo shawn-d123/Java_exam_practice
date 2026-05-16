@@ -151,15 +151,35 @@ public class Programming_Aplications_Q1 {
      */
     public static int validDictionary(char[][] board, String[] dictionary)
     {
-        if(board == null){
+        // dictionary null check
+        if (dictionary == null) {
             return 1;
         }
-        if(board.length <= 1){
+
+        // dictionary too small / empty
+        if (dictionary.length == 0) {
             return 2;
         }
 
+        // board must be valid
+        if (validBoard(board) != 0) {
+            return 3;
+        }
 
-        return -1;
+        // maximum allowed word length = total squares on the board
+        int maxWordLength = board.length * board.length;
+
+        // check each dictionary word
+        for (int i = 0; i < dictionary.length; i++) {
+            if (validWord(dictionary[i]) != 0) {
+                return 4; // dictionary contains an invalid word
+            }
+            if (dictionary[i].length() > maxWordLength) {
+                return 5; // word too big for the board
+            }
+        }
+
+        return 0; // dictionary is valid
     }
 
     /*
