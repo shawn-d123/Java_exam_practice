@@ -51,6 +51,34 @@ public class Programming_Aplications_exam_QS_2 {
         return 0;
     }
 
+    /*
+     * Question 2 Variation — Valid Word Boolean
+     *
+     * Write a method that checks whether a String is a valid game word.
+     *
+     * A valid word must:
+     * - not be null
+     * - not be empty
+     * - contain only capital letters from 'A' to 'Z'
+     *
+     * Return:
+     * true if the word is valid
+     * false if the word is invalid
+     */
+    public static boolean validWordV1(String word)
+    {
+        if (word == null || word.length() == 0){
+            return false;
+        }
+        for(int i = 0; i < word.length(); i++){
+
+            if(validSquare(word.charAt(i)) == 1){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
 }
