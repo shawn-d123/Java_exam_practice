@@ -1,6 +1,70 @@
 public class Programming_Aplications_exam_QS_6 {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+        char[][] board = {
+                {'C', 'A', 'T', 'X'},
+                {'D', 'O', 'A', 'X'},
+                {'O', 'A', 'G', 'X'},
+                {'G', 'X', 'X', 'X'}
+        };
 
+        System.out.println("===== Testing findWord =====");
+        System.out.println("findWord(\"DOG\", board, 1, 0) expected 0, got: " + findWord("DOG", board, 1, 0));
+        System.out.println("findWord(\"CAT\", board, 0, 0) expected 1, got: " + findWord("CAT", board, 0, 0));
+        System.out.println("findWord(\"COG\", board, 0, 0) expected 2, got: " + findWord("COG", board, 0, 0));
+        System.out.println("findWord(\"GAT\", board, 2, 0) expected 3, got: " + findWord("GAT", board, 2, 0));
+        System.out.println("findWord(\"FISH\", board, 0, 0) expected 4, got: " + findWord("FISH", board, 0, 0));
+        System.out.println("findWord(\"Dog\", board, 1, 0) expected 5, got: " + findWord("Dog", board, 1, 0));
+        System.out.println("findWord(\"DOG\", board, -1, 0) expected 7, got: " + findWord("DOG", board, -1, 0));
+
+        System.out.println();
+
+        System.out.println("===== Testing findWordV1 =====");
+        System.out.println("findWordV1(\"DOG\", board, 1, 0) expected true, got: " + findWordV1("DOG", board, 1, 0));
+        System.out.println("findWordV1(\"FISH\", board, 0, 0) expected false, got: " + findWordV1("FISH", board, 0, 0));
+        System.out.println("findWordV1(\"Dog\", board, 1, 0) expected false, got: " + findWordV1("Dog", board, 1, 0));
+
+        System.out.println();
+
+        System.out.println("===== Testing findWordV2 =====");
+        System.out.println("findWordV2(\"DOG\", board, 1, 0) expected VERTICAL, got: " + findWordV2("DOG", board, 1, 0));
+        System.out.println("findWordV2(\"CAT\", board, 0, 0) expected HORIZONTAL, got: " + findWordV2("CAT", board, 0, 0));
+        System.out.println("findWordV2(\"COG\", board, 0, 0) expected DIAGONAL_DOWN, got: " + findWordV2("COG", board, 0, 0));
+        System.out.println("findWordV2(\"GAT\", board, 2, 0) expected DIAGONAL_UP, got: " + findWordV2("GAT", board, 2, 0));
+        System.out.println("findWordV2(\"FISH\", board, 0, 0) expected NOT_FOUND, got: " + findWordV2("FISH", board, 0, 0));
+        System.out.println("findWordV2(\"Dog\", board, 1, 0) expected INVALID_WORD, got: " + findWordV2("Dog", board, 1, 0));
+
+        System.out.println();
+
+        int[] validStartPosition = {1, 0};
+        int[] horizontalStartPosition = {0, 0};
+        int[] invalidLengthPosition = {1};
+        int[] outOfBoundsPosition = {-1, 0};
+
+        System.out.println("===== Testing findWordV3 =====");
+        System.out.println("findWordV3(\"DOG\", board, validStartPosition) expected 0, got: " + findWordV3("DOG", board, validStartPosition));
+        System.out.println("findWordV3(\"CAT\", board, horizontalStartPosition) expected 1, got: " + findWordV3("CAT", board, horizontalStartPosition));
+        System.out.println("findWordV3(\"DOG\", board, null) expected 7, got: " + findWordV3("DOG", board, null));
+        System.out.println("findWordV3(\"DOG\", board, invalidLengthPosition) expected 8, got: " + findWordV3("DOG", board, invalidLengthPosition));
+        System.out.println("findWordV3(\"DOG\", board, outOfBoundsPosition) expected 9, got: " + findWordV3("DOG", board, outOfBoundsPosition));
+
+        System.out.println();
+
+        char[][] multiDirectionBoard = {
+                {'A', 'A', 'A'},
+                {'A', 'A', 'X'},
+                {'A', 'X', 'A'}
+        };
+
+        System.out.println("===== Testing countDirectionsFromStart =====");
+        System.out.println("countDirectionsFromStart(\"AAA\", multiDirectionBoard, 0, 0) expected 3, got: "
+                + countDirectionsFromStart("AAA", multiDirectionBoard, 0, 0));
+        System.out.println("countDirectionsFromStart(\"DOG\", board, 1, 0) expected 1, got: "
+                + countDirectionsFromStart("DOG", board, 1, 0));
+        System.out.println("countDirectionsFromStart(\"FISH\", board, 0, 0) expected 0, got: "
+                + countDirectionsFromStart("FISH", board, 0, 0));
+        System.out.println("countDirectionsFromStart(\"Dog\", board, 0, 0) expected -1, got: "
+                + countDirectionsFromStart("Dog", board, 0, 0));
     }
 
     // question 1 - Valid Square
