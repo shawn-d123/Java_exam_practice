@@ -347,8 +347,6 @@ public class Programming_Aplications_Q1 {
             }
         }
 
-
-        // Write your answer here.
         return 4; // word not found from the given start position
     }
 
