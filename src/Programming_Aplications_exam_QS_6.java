@@ -106,7 +106,7 @@ public class Programming_Aplications_exam_QS_6 {
         }
 
         // out of bounds check
-        if(startRow < 0 || startCol < 0 || startRow >= board[0].length || startCol >= board.length){
+        if (startRow < 0 || startCol < 0 || startRow >= board.length || startCol >= board[0].length){
             return 7;
         }
 
@@ -195,7 +195,86 @@ public class Programming_Aplications_exam_QS_6 {
      */
     public static boolean findWordV1(String word, char[][] board, int startRow, int startCol)
     {
-        // Write your answer here.
+        // invalid word check
+        if(validWord(word) != 0){
+            return false;
+        }
+
+        // invalid board check
+        if(validBoard(board) != 0){
+            return false;
+        }
+
+        // out of bounds check
+        if (startRow < 0 || startCol < 0 || startRow >= board.length || startCol >= board[0].length){
+            return false;
+        }
+
+        int wordLength = word.length();
+        int boardLength = board.length;
+
+        // check vertically downward
+        boolean verticallyFound = true;
+        // if the word fits the board from startRow
+        if(startRow + wordLength <= boardLength){
+            // iterate for the length of the word
+            for(int i = 0; i < wordLength; i++){
+                // if the character in the board does not match the character in the word, we set verticallyFound to false
+                if(board[startRow + i][startCol] != word.charAt(i)){
+                    verticallyFound = false;
+                }
+            }
+            // if it manages to remain true for the length of the word, we have found the word.
+            if(verticallyFound == true){
+                return true;
+            }
+        }
+
+        // check horizontally right
+        boolean horizontallyFound = true;
+        // if the word fits the board from startCol
+        if(startCol + wordLength <= boardLength){
+            // iterate for the length of the word
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow][startCol + i] != word.charAt(i)){
+                    horizontallyFound = false;
+                }
+            }
+            // if it manages to remain true for the length of the word, we have found the word.
+            if(horizontallyFound == true){
+                return true;
+            }
+        }
+
+        // check diagonally down-right
+        boolean diagonallyDown = true;
+        // if the word fits the board from startRow (+) and startCol (+)
+        if(startRow + wordLength <= boardLength && startCol + wordLength <= boardLength){
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow + i][startCol + i] != word.charAt(i)){
+                    diagonallyDown = false;
+                }
+            }
+            if(diagonallyDown == true){
+                return true;
+            }
+        }
+
+        // check diagonally UP-right
+        boolean diagonallyUp = true;
+        // subtract from row and ensure it is >= 0, and column is less than board length, ie: word fits
+        if(startRow - (wordLength - 1) >= 0 && startCol + wordLength <= boardLength){
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow - i][startCol + i] != word.charAt(i)){
+                    diagonallyUp = false;
+                }
+            }
+            if(diagonallyUp == true){
+                return true;
+            }
+        }
+        // word not found from given starting position
+        return false;
     }
 
 
@@ -217,7 +296,86 @@ public class Programming_Aplications_exam_QS_6 {
      */
     public static String findWordV2(String word, char[][] board, int startRow, int startCol)
     {
-        // Write your answer here.
+        // invalid word check
+        if(validWord(word) != 0){
+            return "INVALID_WORD";
+        }
+
+        // invalid board check
+        if(validBoard(board) != 0){
+            return "INVALID_BOARD";
+        }
+
+        // out of bounds check
+        if (startRow < 0 || startCol < 0 || startRow >= board.length || startCol >= board[0].length){
+            return "INVALID_POSITION";
+        }
+
+        int wordLength = word.length();
+        int boardLength = board.length;
+
+        // check vertically downward
+        boolean verticallyFound = true;
+        // if the word fits the board from startRow
+        if(startRow + wordLength <= boardLength){
+            // iterate for the length of the word
+            for(int i = 0; i < wordLength; i++){
+                // if the character in the board does not match the character in the word, we set verticallyFound to false
+                if(board[startRow + i][startCol] != word.charAt(i)){
+                    verticallyFound = false;
+                }
+            }
+            // if it manages to remain true for the length of the word, we have found the word.
+            if(verticallyFound == true){
+                return "VERTICAL";
+            }
+        }
+
+        // check horizontally right
+        boolean horizontallyFound = true;
+        // if the word fits the board from startCol
+        if(startCol + wordLength <= boardLength){
+            // iterate for the length of the word
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow][startCol + i] != word.charAt(i)){
+                    horizontallyFound = false;
+                }
+            }
+            // if it manages to remain true for the length of the word, we have found the word.
+            if(horizontallyFound == true){
+                return "HORIZONTAL";
+            }
+        }
+
+        // check diagonally down-right
+        boolean diagonallyDown = true;
+        // if the word fits the board from startRow (+) and startCol (+)
+        if(startRow + wordLength <= boardLength && startCol + wordLength <= boardLength){
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow + i][startCol + i] != word.charAt(i)){
+                    diagonallyDown = false;
+                }
+            }
+            if(diagonallyDown == true){
+                return "DIAGONAL_DOWN";
+            }
+        }
+
+        // check diagonally UP-right
+        boolean diagonallyUp = true;
+        // subtract from row and ensure it is >= 0, and column is less than board length, ie: word fits
+        if(startRow - (wordLength - 1) >= 0 && startCol + wordLength <= boardLength){
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow - i][startCol + i] != word.charAt(i)){
+                    diagonallyUp = false;
+                }
+            }
+            if(diagonallyUp == true){
+                return "DIAGONAL_UP";
+            }
+        }
+        // word not found from given starting position
+        return "NOT_FOUND";
     }
 
 
@@ -248,7 +406,100 @@ public class Programming_Aplications_exam_QS_6 {
      */
     public static int findWordV3(String word, char[][] board, int[] startPosition)
     {
-        // Write your answer here.
+        // invalid word check
+        if(validWord(word) != 0){
+            return 5;
+        }
+
+        // invalid board check
+        if(validBoard(board) != 0){
+            return 6;
+        }
+
+        // null start position check
+        if(startPosition == null){
+            return 7;
+        }
+
+        // start position length check
+        if(startPosition.length != 2){
+            return 8;
+        }
+
+        int startRow = startPosition[0];
+        int startCol = startPosition[1];
+
+        // out of bounds check
+        if (startRow < 0 || startCol < 0 || startRow >= board.length || startCol >= board[0].length){
+            return 9;
+        }
+
+        int wordLength = word.length();
+        int boardLength = board.length;
+
+        // check vertically downward
+        boolean verticallyFound = true;
+        // if the word fits the board from startRow
+        if(startRow + wordLength <= boardLength){
+            // iterate for the length of the word
+            for(int i = 0; i < wordLength; i++){
+                // if the character in the board does not match the character in the word, we set verticallyFound to false
+                if(board[startRow + i][startCol] != word.charAt(i)){
+                    verticallyFound = false;
+                }
+            }
+            // if it manages to remain true for the length of the word, we have found the word.
+            if(verticallyFound == true){
+                return 0;
+            }
+        }
+
+        // check horizontally right
+        boolean horizontallyFound = true;
+        // if the word fits the board from startCol
+        if(startCol + wordLength <= boardLength){
+            // iterate for the length of the word
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow][startCol + i] != word.charAt(i)){
+                    horizontallyFound = false;
+                }
+            }
+            // if it manages to remain true for the length of the word, we have found the word.
+            if(horizontallyFound == true){
+                return 1;
+            }
+        }
+
+        // check diagonally down-right
+        boolean diagonallyDown = true;
+        // if the word fits the board from startRow (+) and startCol (+)
+        if(startRow + wordLength <= boardLength && startCol + wordLength <= boardLength){
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow + i][startCol + i] != word.charAt(i)){
+                    diagonallyDown = false;
+                }
+            }
+            if(diagonallyDown == true){
+                return 2;
+            }
+        }
+
+        // check diagonally UP-right
+        boolean diagonallyUp = true;
+        // subtract from row and ensure it is >= 0, and column is less than board length, ie: word fits
+        if(startRow - (wordLength - 1) >= 0 && startCol + wordLength <= boardLength){
+            for(int i = 0; i < wordLength; i++){
+                if(board[startRow - i][startCol + i] != word.charAt(i)){
+                    diagonallyUp = false;
+                }
+            }
+            if(diagonallyUp == true){
+                return 3;
+            }
+        }
+        // word not found from given starting position
+        return 4;
+
     }
 
 
@@ -276,7 +527,76 @@ public class Programming_Aplications_exam_QS_6 {
      */
     public static int countDirectionsFromStart(String word, char[][] board, int startRow, int startCol)
     {
-        // Write your answer here.
+        //check invalid word
+        if(validWord(word) != 0){
+            return -1;
+        }
+
+        // check invalid board
+        if(validBoard(board) != 0){
+            return -2;
+        }
+
+        // out of bounds check
+        if(startRow < 0 || startRow >= board.length || startCol < 0 || startCol >= board[0].length){
+            return -3;
+        }
+
+        int count = 0;
+
+        // check vertical
+        boolean verticallyFound = true;
+        if(startRow + word.length() <= board.length){
+            for(int i = 0; i < word.length(); i++){
+                if(board[startRow + i][startCol] != word.charAt(i)){
+                    verticallyFound = false;
+                }
+            }
+            if(verticallyFound == true){
+                count ++;
+            }
+        }
+
+        // check horizontal
+        boolean horizontallyFound = true;
+        if(startCol + word.length() <= board.length){
+            for(int i = 0; i < word.length(); i++){
+                if(board[startRow][startCol + i] != word.charAt(i)){
+                    horizontallyFound = false;
+                }
+            }
+            if(horizontallyFound == true){
+                count ++;
+            }
+        }
+
+        // check diagonally down
+        boolean diagonallyDown = true;
+        if(startRow + word.length() <= board.length && startCol + word.length() <= board.length){
+            for(int i = 0; i < word.length(); i++){
+                if(board[startRow + i][startCol + i] != word.charAt(i)){
+                    diagonallyDown = false;
+                }
+            }
+            if(diagonallyDown == true){
+                count ++;
+            }
+        }
+
+        // check diagonally UP
+        boolean diagonallyUp = true;
+        if(startRow - (word.length() -1) >= 0 && startCol + word.length() <= board.length){
+            for(int i = 0; i < word.length(); i++){
+                if(board[startRow - i][startCol + i] != word.charAt(i)){
+                    diagonallyUp = false;
+                }
+            }
+            if(diagonallyUp == true){
+                count ++;
+            }
+        }
+
+        return count;
     }
 
 }
