@@ -122,6 +122,7 @@ public class Programming_Aplications_exam_QS_6 {
                 // if the character in the board does not match the character in the word, we set verticallyFound to false
                 if(board[startRow + i][startCol] != word.charAt(i)){
                     verticallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -138,6 +139,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow][startCol + i] != word.charAt(i)){
                     horizontallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -153,6 +155,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow + i][startCol + i] != word.charAt(i)){
                     diagonallyDown = false;
+                    break;
                 }
             }
             if(diagonallyDown == true){
@@ -167,6 +170,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow - i][startCol + i] != word.charAt(i)){
                     diagonallyUp = false;
+                    break;
                 }
             }
             if(diagonallyUp == true){
@@ -222,6 +226,7 @@ public class Programming_Aplications_exam_QS_6 {
                 // if the character in the board does not match the character in the word, we set verticallyFound to false
                 if(board[startRow + i][startCol] != word.charAt(i)){
                     verticallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -238,6 +243,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow][startCol + i] != word.charAt(i)){
                     horizontallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -253,6 +259,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow + i][startCol + i] != word.charAt(i)){
                     diagonallyDown = false;
+                    break;
                 }
             }
             if(diagonallyDown == true){
@@ -267,6 +274,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow - i][startCol + i] != word.charAt(i)){
                     diagonallyUp = false;
+                    break;
                 }
             }
             if(diagonallyUp == true){
@@ -323,6 +331,7 @@ public class Programming_Aplications_exam_QS_6 {
                 // if the character in the board does not match the character in the word, we set verticallyFound to false
                 if(board[startRow + i][startCol] != word.charAt(i)){
                     verticallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -339,6 +348,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow][startCol + i] != word.charAt(i)){
                     horizontallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -354,6 +364,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow + i][startCol + i] != word.charAt(i)){
                     diagonallyDown = false;
+                    break;
                 }
             }
             if(diagonallyDown == true){
@@ -368,6 +379,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow - i][startCol + i] != word.charAt(i)){
                     diagonallyUp = false;
+                    break;
                 }
             }
             if(diagonallyUp == true){
@@ -446,6 +458,7 @@ public class Programming_Aplications_exam_QS_6 {
                 // if the character in the board does not match the character in the word, we set verticallyFound to false
                 if(board[startRow + i][startCol] != word.charAt(i)){
                     verticallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -462,6 +475,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow][startCol + i] != word.charAt(i)){
                     horizontallyFound = false;
+                    break;
                 }
             }
             // if it manages to remain true for the length of the word, we have found the word.
@@ -477,6 +491,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow + i][startCol + i] != word.charAt(i)){
                     diagonallyDown = false;
+                    break;
                 }
             }
             if(diagonallyDown == true){
@@ -491,6 +506,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < wordLength; i++){
                 if(board[startRow - i][startCol + i] != word.charAt(i)){
                     diagonallyUp = false;
+                    break;
                 }
             }
             if(diagonallyUp == true){
@@ -550,6 +566,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < word.length(); i++){
                 if(board[startRow + i][startCol] != word.charAt(i)){
                     verticallyFound = false;
+                    break;
                 }
             }
             if(verticallyFound == true){
@@ -563,6 +580,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < word.length(); i++){
                 if(board[startRow][startCol + i] != word.charAt(i)){
                     horizontallyFound = false;
+                    break;
                 }
             }
             if(horizontallyFound == true){
@@ -576,6 +594,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < word.length(); i++){
                 if(board[startRow + i][startCol + i] != word.charAt(i)){
                     diagonallyDown = false;
+                    break;
                 }
             }
             if(diagonallyDown == true){
@@ -589,6 +608,7 @@ public class Programming_Aplications_exam_QS_6 {
             for(int i = 0; i < word.length(); i++){
                 if(board[startRow - i][startCol + i] != word.charAt(i)){
                     diagonallyUp = false;
+                    break;
                 }
             }
             if(diagonallyUp == true){
