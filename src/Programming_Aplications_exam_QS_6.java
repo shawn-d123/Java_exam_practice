@@ -683,4 +683,228 @@ public class Programming_Aplications_exam_QS_6 {
         return count;
     }
 
+
+
+
+
+
+
+
+
+    /*
+     * Question 6 Variation — Find Word in 8 Directions
+     *
+     * Write a method that checks whether a word appears on the board
+     * from a given starting position.
+     *
+     * Valid directions:
+     * - vertical down
+     * - horizontal right
+     * - diagonal down-right
+     * - diagonal up-right
+     * - vertical up
+     * - horizontal left
+     * - diagonal up-left
+     * - diagonal down-left
+     *
+     * Return:
+     * 0 if the word is found vertically down
+     * 1 if the word is found horizontally right
+     * 2 if the word is found diagonally down-right
+     * 3 if the word is found diagonally up-right
+     * 4 if the word is found vertically up
+     * 5 if the word is found horizontally left
+     * 6 if the word is found diagonally up-left
+     * 7 if the word is found diagonally down-left
+     * 8 if the word is not found from the given starting position
+     * 9 if the word is invalid
+     * 10 if the board is invalid
+     * 11 if the start coordinates are out of bounds
+     */
+    public static int findWordEightDirections(String word, char[][] board, int startRow, int startCol)
+    {
+        // invalid word check
+        if (validWord(word) != 0)
+        {
+            return 9;
+        }
+
+        // invalid board check
+        if (validBoard(board) != 0)
+        {
+            return 10;
+        }
+
+        // out of bounds check
+        if (startRow < 0 || startRow >= board.length || startCol < 0 || startCol >= board[0].length)
+        {
+            return 11;
+        }
+
+        int wordLength = word.length();
+        int boardLength = board.length;
+
+        // check vertical down
+        boolean verticallyDownFound = true;
+
+        if (startRow + wordLength <= boardLength)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow + i][startCol] != word.charAt(i))
+                {
+                    verticallyDownFound = false;
+                    break;
+                }
+            }
+
+            if (verticallyDownFound == true)
+            {
+                return 0;
+            }
+        }
+
+        // check horizontal right
+        boolean horizontallyRightFound = true;
+
+        if (startCol + wordLength <= boardLength)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow][startCol + i] != word.charAt(i))
+                {
+                    horizontallyRightFound = false;
+                    break;
+                }
+            }
+
+            if (horizontallyRightFound == true)
+            {
+                return 1;
+            }
+        }
+
+        // check diagonal down-right
+        boolean diagonallyDownRightFound = true;
+
+        if (startRow + wordLength <= boardLength && startCol + wordLength <= boardLength)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow + i][startCol + i] != word.charAt(i))
+                {
+                    diagonallyDownRightFound = false;
+                    break;
+                }
+            }
+
+            if (diagonallyDownRightFound == true)
+            {
+                return 2;
+            }
+        }
+
+        // check diagonal up-right
+        boolean diagonallyUpRightFound = true;
+
+        if (startRow - (wordLength - 1) >= 0 && startCol + wordLength <= boardLength)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow - i][startCol + i] != word.charAt(i))
+                {
+                    diagonallyUpRightFound = false;
+                    break;
+                }
+            }
+
+            if (diagonallyUpRightFound == true)
+            {
+                return 3;
+            }
+        }
+
+        // check vertical up
+        boolean verticallyUpFound = true;
+
+        if (startRow - (wordLength - 1) >= 0)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow - i][startCol] != word.charAt(i))
+                {
+                    verticallyUpFound = false;
+                    break;
+                }
+            }
+
+            if (verticallyUpFound == true)
+            {
+                return 4;
+            }
+        }
+
+        // check horizontal left
+        boolean horizontallyLeftFound = true;
+
+        if (startCol - (wordLength - 1) >= 0)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow][startCol - i] != word.charAt(i))
+                {
+                    horizontallyLeftFound = false;
+                    break;
+                }
+            }
+
+            if (horizontallyLeftFound == true)
+            {
+                return 5;
+            }
+        }
+
+        // check diagonal up-left
+        boolean diagonallyUpLeftFound = true;
+
+        if (startRow - (wordLength - 1) >= 0 && startCol - (wordLength - 1) >= 0)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow - i][startCol - i] != word.charAt(i))
+                {
+                    diagonallyUpLeftFound = false;
+                    break;
+                }
+            }
+
+            if (diagonallyUpLeftFound == true)
+            {
+                return 6;
+            }
+        }
+
+        // check diagonal down-left
+        boolean diagonallyDownLeftFound = true;
+
+        if (startRow + wordLength <= boardLength && startCol - (wordLength - 1) >= 0)
+        {
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (board[startRow + i][startCol - i] != word.charAt(i))
+                {
+                    diagonallyDownLeftFound = false;
+                    break;
+                }
+            }
+
+            if (diagonallyDownLeftFound == true)
+            {
+                return 7;
+            }
+        }
+
+        // word not found from the given starting position
+        return 8;
+    }
 }
