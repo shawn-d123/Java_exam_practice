@@ -129,6 +129,28 @@ public class Programming_Aplications_exam_QS_5 {
         return 5;
     }
 
+    public static int Q5LocateWord(String word, String[] dictionary)
+    {
+        // word null check
+        if(word == null){
+            return -1;
+        }
+        // word empty check
+        if (word.isEmpty()){
+            return -2;
+        }
+
+        // check if word in dict
+        for(int i = 0; i < dictionary.length; i++){
+            if (word.equals(dictionary[i])){
+                return 1;
+            }
+        }
+        // not in dict
+        return -3;
+    }
+
+
     /*
      * Question 5 Variation — Locate Word Boolean
      *

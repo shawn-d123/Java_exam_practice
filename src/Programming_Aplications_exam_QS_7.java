@@ -407,6 +407,37 @@ public class Programming_Aplications_exam_QS_7 {
     }
 
     /*
+    Test 1: If the dictionary words do not match the board size, return null  (1 mark)
+
+    Test 2: Otherwise, return a count of how many times each word in the dictionary appears in the board (A percentage of 3 marks; based on the correct count of the words in the dictionary)
+     */
+
+    public static int[] Q7CountDictionary(char[][] board, String[] dictionary){
+
+        // words in dict too big for board
+        for(int i = 0; i < dictionary.length; i++){
+            if(dictionary[i].length() > board.length){
+                return null;
+            }
+        }
+
+        int[] result = new int[dictionary.length];
+
+        for(int i = 0; i < dictionary.length; i++){
+            for(int row = 0; row < board.length; row++){
+                for(int col = 0; col < board[row].length; col++){
+                    String word = dictionary[i];
+                    int currentRow = row;
+                    int currentCol = col;
+                    int wordCount = countDirectionsFromStart(word, board, currentRow, currentCol);
+                    result[i] += wordCount;
+                }
+            }
+        }
+        return result;
+    }
+
+    /*
      * Question 7 Variation — Count Dictionary Using ArrayList
      *
      * Write a method that counts how many times each dictionary word

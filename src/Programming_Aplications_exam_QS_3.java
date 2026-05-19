@@ -133,6 +133,40 @@ public class Programming_Aplications_exam_QS_3 {
         return 0;
     }
 
+    public static int Q3ValidBoard(char[][] board){
+        // null check
+        if (board == null){
+            return -1;
+        }
+        // empty/ too small check
+        if (board.length < 1){
+            return -2;
+        }
+        // not square check - for loop
+        int boardLength = board.length;
+        for(int i = 0; i < boardLength; i++){
+
+            // null row check
+            if(board[i] == null){
+                return -2;
+            }
+
+            // not square check
+            if(board[i].length != boardLength){
+                return -3;
+            }
+
+            // invalid character check
+            for (int j = 0; j < board[i].length; j++){
+                if(validSquare(board[i][j]) == 1){
+                    return -4;
+                }
+            }
+        }
+        return 1;
+
+    }
+
     /*
      * Question 3 Variation — Valid Board Boolean
      *

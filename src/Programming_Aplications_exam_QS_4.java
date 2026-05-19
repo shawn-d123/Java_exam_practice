@@ -212,6 +212,34 @@ public class Programming_Aplications_exam_QS_4 {
         return 0;
     }
 
+    public static int Q4ValidDictionary(char[][] board, String[] dictionary){
+        // null dict check
+        if(dictionary == null){
+            return -1;
+        }
+
+        //empty Dict/too small check
+        if(dictionary.length == 0){
+            return -2;
+        }
+
+        int boardLength = board.length;
+
+        for(int i = 0; i < dictionary.length; i++){
+
+            // invalid word check
+            if (validWord(dictionary[i]) != 0){
+                return -4;
+            }
+
+            // too long word check
+            if(dictionary[i].length() > boardLength){
+                return -3;
+            }
+        }
+        return 1;
+    }
+
     /*
      * Question 4 Variation — Valid Dictionary Boolean
      *

@@ -65,6 +65,14 @@ public class Programming_Aplications_exam_QS_1 {
         }
     }
 
+    public static boolean Q1ValidSquare(char square){
+        if (square >= 'A' && square <= 'Z'){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
      * Question 1 — Valid Square
      *
